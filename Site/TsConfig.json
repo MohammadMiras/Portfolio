@@ -1,0 +1,46 @@
+{
+    "extends": "./TsConfigBase",
+    "compilerOptions": {
+        "paths": {
+            "Base": [
+                "src/Base/Exports"
+            ],
+            "Dashboard": [
+                "src/Components/Dashboard/Exports"
+            ],
+            "EntityRendererComponents": [
+                "src/EntityRendererComponents"
+            ],
+            "Globalization": [
+                "src/Modules/Globalization/Exports"
+            ],
+            "Index": [
+                "src/Components/Index/Exports"
+            ],
+            "Layout": [
+                "src/Components/Layout/Exports"
+            ],
+            "Loaders": [
+                "src/Loaders"
+            ],
+            "PaginationBehaviors": [
+                "src/PaginationBehaviors"
+            ],
+            "Qwik": [
+                "node_modules/@builder.io/qwik"
+            ],
+            "QwikCity": [
+                "node_modules/@builder.io/qwik-city"
+            ],
+            "RichTextComponents": [
+                "src/RichTextComponents"
+            ],
+            "Shared": [
+                "src/Components/Shared/Exports"
+            ],
+            "Svg": [
+                "src/Components/Svg/Exports"
+            ]
+        }
+    }
+}
