@@ -49,7 +49,7 @@ jobs:
       - name: Get runnable
         run: |
          cd /
-         git clone git@github.com:MohammadMiras/Portfolio
+         sudo git clone git@github.com:MohammadMiras/Portfolio
          sudo chmod 777 --preserve-root /Portfolio
 
       - name: Build production docker
