@@ -48,15 +48,18 @@ jobs:
 
       - name: Get runnable
         run: |
-          echo "${{ secrets.SSH }}" > ~/.ssh/id_ed25519
-          chmod 400 ~/.ssh/id_ed25519
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/id_ed25519
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          eval "$(ssh-agent -s)"
-          cd /
-          git clone git@github.com:MohammadMiras/Portfolio      
-          sudo chmod 777 --preserve-root /Portfolio
+         mkdir -p ~/.ssh
+         chmod 700 ~/.ssh
+         cat <<EOF > ~/.ssh/id_ed25519
+         ${{ secrets.SSH }}
+         EOF         
+         chmod 600 ~/.ssh/id_ed25519         
+         eval "$(ssh-agent -s)"
+         ssh-add ~/.ssh/id_ed25519         
+         ssh-keyscan github.com >> ~/.ssh/known_hosts
+         cd /
+         git clone git@github.com:MohammadMiras/Portfolio
+         sudo chmod 777 --preserve-root /Portfolio
 
       - name: Build production docker
         run: |
