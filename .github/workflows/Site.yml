@@ -48,7 +48,6 @@ jobs:
 
       - name: Get runnable
         run: |
-          mkdir -p ~/.ssh
           echo "${{ secrets.SSH }}" > ~/.ssh/id_ed25519
           chmod 400 ~/.ssh/id_ed25519
           eval "$(ssh-agent -s)"
