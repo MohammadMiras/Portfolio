@@ -53,7 +53,9 @@ jobs:
           IFS="/" read -r GitHubOrganization GitHubRepository <<< "$GITHUB_REPOSITORY"
           echo "Organization: $GitHubOrganization"
           echo "Repository: $GitHubRepository"
-          Clone MohammadMiras Portfolio
+          cd /
+          git clone git@github.com:MohammadMiras/Portfolio.git
+          sudo chmod -R 777 /Portfolio
 
 
       - name: Build production docker
