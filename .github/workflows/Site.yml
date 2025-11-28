@@ -51,7 +51,7 @@ jobs:
           IFS="/" read -r GitHubOrganization GitHubRepository <<< "$GITHUB_REPOSITORY"
           echo "Organization: $GitHubOrganization"
           echo "Repository: $GitHubRepository"
-          Clone $GitHubOrganization $GitHubRepository
+          Clone MohammadMiras Portfolio
 
 
       - name: Build production docker
