@@ -20,19 +20,16 @@ jobs:
           echo "${{ secrets.SSH }}" > ~/.ssh/id_ed25519
           chmod --preserve-root 400 ~/.ssh/id_ed25519
           echo "${{ secrets.PAT }}" > /LocalSecrets/GitHubAccessToken
-          cat /LocalSecrets/GitHubAccessToken
-          cat ~/.ssh/id_ed25519
           cd /AstraFlor
           git clone git@github.com:AstraFlor/Commands
           git clone git@github.com:AstraFlor/Scripts
           IFS="/" read -r -a repo_array <<< "$GITHUB_REPOSITORY"
           echo "GitHubOrganization=${repo_array[0]}" >> $GITHUB_ENV
-          echo "GitHubRepository=${repo_array[1]}" >> $GITHUB_ENV          
-        
+          echo "GitHubRepository=${repo_array[1]}" >> $GITHUB_ENV
+
       - name: Clone Holding
         run: |
           Clone AstraFlor
-          Clone MohammadMiras Portfolio
 
       - name: Change Docker image directory ownership
         run: sudo chown -R $USER:$USER /var/lib/docker/image
@@ -48,7 +45,20 @@ jobs:
         run: |
           docker pull mohammadmiras/astraflorsite
           docker pull node:lts-trixie-slim
-          
+
+      - name: Get runnable
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH }}" > ~/.ssh/id_ed25519
+          chmod 400 ~/.ssh/id_ed25519
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          eval "$(ssh-agent -s)"
+          cd /
+          git@github.com:MohammadMiras/Portfolio      
+          sudo chmod 777 --preserve-root /Portfolio
+
       - name: Build production docker
         run: |
           cd /Portfolio/Site
