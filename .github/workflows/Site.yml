@@ -46,9 +46,13 @@ jobs:
           docker pull mohammadmiras/astraflorsite
           docker pull node:lts-trixie-slim
 
-      - name: Get runnable
+      - name: Clone repository
         run: |
+          IFS="/" read -r GitHubOrganization GitHubRepository <<< "$GITHUB_REPOSITORY"
+          echo "Organization: $GitHubOrganization"
+          echo "Repository: $GitHubRepository"
           Clone $GitHubOrganization $GitHubRepository
+
 
       - name: Build production docker
         run: |
