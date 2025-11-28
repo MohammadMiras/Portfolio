@@ -11,25 +11,25 @@ jobs:
 
       - name: Initialize
         run: |
-          echo "/HolismHolding/Commands" >> $GITHUB_PATH
-          sudo mkdir /HolismHolding
-          sudo chmod 777 --preserve-root /HolismHolding
+          echo "/AstraFlor/Commands" >> $GITHUB_PATH
+          sudo mkdir /AstraFlor
+          sudo chmod 777 --preserve-root /AstraFlor
           sudo mkdir /LocalSecrets
           sudo chmod 777 --preserve-root /LocalSecrets
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH }}" > ~/.ssh/id_ed25519
           chmod --preserve-root 400 ~/.ssh/id_ed25519
           echo "${{ secrets.PAT }}" > /LocalSecrets/GitHubAccessToken
-          cd /HolismHolding
-          git clone git@github.com:HolismHolding/Commands
-          git clone git@github.com:HolismHolding/Scripts
+          cd /AstraFlor
+          git clone git@github.com:AstraFlor/Commands
+          git clone git@github.com:AstraFlor/Scripts
           IFS="/" read -r -a repo_array <<< "$GITHUB_REPOSITORY"
           echo "GitHubOrganization=${repo_array[0]}" >> $GITHUB_ENV
           echo "GitHubRepository=${repo_array[1]}" >> $GITHUB_ENV
 
       - name: Clone Holding
         run: |
-          Clone HolismHolding
+          Clone AstraFlor
 
       - name: Change Docker image directory ownership
         run: sudo chown -R $USER:$USER /var/lib/docker/image
@@ -43,7 +43,7 @@ jobs:
 
       - name: Pull images
         run: |
-          docker pull holism/site
+          docker pull mohammadmiras/astraflorsite
           docker pull node:lts-trixie-slim
 
       - name: Get runnable
@@ -53,7 +53,7 @@ jobs:
       - name: Build production docker
         run: |
           cd /Portfolio/Site
-          /HolismHolding/Commands/Build
+          /AstraFlor/Commands/Build
 
       - name: Sign in to GitHub Container Registry
         run: |
