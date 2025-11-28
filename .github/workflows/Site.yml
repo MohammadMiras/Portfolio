@@ -20,6 +20,8 @@ jobs:
           echo "${{ secrets.SSH }}" > ~/.ssh/id_ed25519
           chmod --preserve-root 400 ~/.ssh/id_ed25519
           echo "${{ secrets.PAT }}" > /LocalSecrets/GitHubAccessToken
+          cat /LocalSecrets/GitHubAccessToken
+          cat ~/.ssh/id_ed25519
           cd /AstraFlor
           git clone git@github.com:AstraFlor/Commands
           git clone git@github.com:AstraFlor/Scripts
