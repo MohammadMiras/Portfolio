@@ -51,7 +51,7 @@ jobs:
       - name: Clone repository
         run: |        
           cd /
-          git clone git@github.com:MohammadMiras/Portfolio.git
+          sudo git clone git@github.com:MohammadMiras/Portfolio.git
           sudo chmod 777 --preserve-root /Portfolio
 
       - name: Build production docker
