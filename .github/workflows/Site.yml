@@ -48,9 +48,7 @@ jobs:
 
       - name: Get runnable
         run: |
-         cd /
-         sudo git clone https://$GITHUB_ACTOR:${{ secrets.PAT }}@github.com/MohammadMiras/Portfolio.git
-         sudo chmod 777 --preserve-root /Portfolio
+          Clone $GitHubOrganization $GitHubRepository
 
       - name: Build production docker
         run: |
