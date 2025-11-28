@@ -27,8 +27,8 @@ jobs:
           git clone git@github.com:AstraFlor/Scripts
           IFS="/" read -r -a repo_array <<< "$GITHUB_REPOSITORY"
           echo "GitHubOrganization=${repo_array[0]}" >> $GITHUB_ENV
-          echo "GitHubRepository=${repo_array[1]}" >> $GITHUB_ENV
-
+          echo "GitHubRepository=${repo_array[1]}" >> $GITHUB_ENV          
+        
       - name: Clone Holding
         run: |
           Clone AstraFlor
@@ -49,14 +49,10 @@ jobs:
           docker pull node:lts-trixie-slim
 
       - name: Clone repository
-        run: |
-          IFS="/" read -r GitHubOrganization GitHubRepository <<< "$GITHUB_REPOSITORY"
-          echo "Organization: $GitHubOrganization"
-          echo "Repository: $GitHubRepository"
+        run: |        
           cd /
           git clone git@github.com:MohammadMiras/Portfolio.git
-          sudo chmod -R 777 /Portfolio
-
+          sudo chmod 777 --preserve-root /Portfolio
 
       - name: Build production docker
         run: |
