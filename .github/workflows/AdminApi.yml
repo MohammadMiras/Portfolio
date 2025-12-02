@@ -1,0 +1,61 @@
+name: AdminApi
+
+on:
+  workflow_dispatch:
+
+jobs:
+  buildAndPush:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Initialize
+        run: |
+          echo "/AstraFlor/Commands" >> $GITHUB_PATH
+          sudo mkdir /AstraFlor
+          sudo chmod 777 --preserve-root /AstraFlor
+          sudo mkdir /LocalSecrets
+          sudo chmod 777 --preserve-root /LocalSecrets
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH }}" > ~/.ssh/id_ed25519
+          chmod --preserve-root 400 ~/.ssh/id_ed25519
+          echo "${{ secrets.PAT }}" > /LocalSecrets/GitHubAccessToken
+          cd /AstraFlor
+          git clone git@github.com:AstraFlor/Commands
+          git clone git@github.com:AstraFlor/Scripts
+          IFS="/" read -r -a repo_array <<< "$GITHUB_REPOSITORY"
+          echo "GitHubOrganization=${repo_array[0]}" >> $GITHUB_ENV
+          echo "GitHubRepository=${repo_array[1]}" >> $GITHUB_ENV
+
+      - name: Clone Holding
+        run: |
+          Clone AstraFlor
+
+      - name: Pull AstraFlora/Api
+        run: |
+          docker pull astraflora/api
+
+      - name: Pull AstraFlora/Api-Prod
+        run: |
+          docker pull astraflora/api-prod
+
+      - name: Get runnable
+        run: |
+          Clone $GitHubOrganization $GitHubRepository
+
+      - name: Build production docker
+        run: |
+          cd /Portfolio/AdminApi
+          /AstraFlor/Commands/Build
+
+      - name: Sign in to GitHub Container Registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push the image
+        run: |
+          docker push ghcr.io/mohammadmiras/portfolio/adminapi:latest
+
+      - name: Sign out from GitHub Container Registry
+        run: |
+          docker logout
