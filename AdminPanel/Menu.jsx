@@ -1,0 +1,57 @@
+import DashboardIcon from "@mui/icons-material/Dashboard"
+import Menus from "Menus"
+
+const menuItems = [
+    {
+        title: "InfraDashboard",
+        icon: DashboardIcon,
+        path: "/"
+    },
+    ...Menus.Accounts,
+    ...Menus.Aggregates,
+    ...Menus.Attributes,
+    ...Menus.Banners,
+    ...Menus.Blog,
+    ...Menus.Products,
+    ...Menus.Brands,
+    ...Menus.Orders,
+    ...Menus.Sales,
+    ...Menus.Bundling,
+    ...Menus.ChangeLog,
+    ...Menus.Contacts,
+    ...Menus.ContentPolicies,
+    ...Menus.Contents,
+    ...Menus.Currencies,
+    ...Menus.Dashboards,
+    ...Menus.DataTypes,
+    ...Menus.Discounts,
+    ...Menus.Flows,
+    ...Menus.Forms,
+    ...Menus.Galleries,
+    ...Menus.Geo,
+    ...Menus.Globalization,
+    ...Menus.Granularities,
+    ...Menus.Inventory,
+    ...Menus.Media,
+    ...Menus.MonetaryValues,
+    ...Menus.Navigation,
+    ...Menus.NewContents,
+    ...Menus.NewTaxonomy,
+    ...Menus.Notifications,
+    ...Menus.Packaging,
+    ...Menus.Payment,
+    ...Menus.Places,
+    ...Menus.Pricing,
+    ...Menus.Questions,
+    ...Menus.Scopes,
+    ...Menus.Seo,
+    ...Menus.Settings,
+    ...Menus.Shipment,
+    ...Menus.Social,
+    ...Menus.StateMachines,
+    ...Menus.Tenants,
+    ...Menus.Units,
+    ...Menus.Modules
+]
+
+export default menuItems
