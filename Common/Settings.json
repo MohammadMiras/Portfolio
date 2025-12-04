@@ -1,8 +1,8 @@
 {
     "IsDeveloping": true,
-    "AccountsUrl": "https://accounts.pydr.ir",
+    "AccountsUrl": "https://accounts.mohammadmiras.com",
     "AccountsRealm": "Development",
-    "AccountsClient": "Panel",
+    "AccountsClient": "AdminPanel",
     "DatabaseServer": "database",
     "DatabaseUser": "root",
     "DatabasePassword": "IC1joYMLZTT0fQMJ5qcz",
