@@ -1,0 +1,15 @@
+certbot --cert-name mohammadmiras.com \
+-d api.admin.mohammadmiras.com \
+-d db.mohammadmiras.com \
+-d accounts.mohammadmiras.com \
+-d mohammadmiras.com 
+
+
+-d api.crawler.mohammadmiras.com \
+-d api.mohammadmiras.com \
+-d api.seller.mohammadmiras.com \
+-d seller.mohammadmiras.com \
+-d shoptheme.mohammadmiras.com \
+-d meraj.mohammadmiras.com \
+-d storage.mohammadmiras.com \
+-d www.mohammadmiras.com
