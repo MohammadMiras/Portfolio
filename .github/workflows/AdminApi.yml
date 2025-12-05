@@ -37,7 +37,7 @@ jobs:
 
       - name: Pull AstraFlora/Api-Prod
         run: |
-          docker pull astraflora/api-prod
+          docker pull astraflora/api-prod 
 
       - name: Get runnable
         run: |
