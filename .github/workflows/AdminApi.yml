@@ -30,6 +30,10 @@ jobs:
       - name: Clone Holding
         run: |
           Clone AstraFlor
+          
+      - name: Get runnable
+        run: |
+          Clone $GitHubOrganization $GitHubRepository
 
       - name: Pull AstraFlora/Api
         run: |
@@ -38,10 +42,6 @@ jobs:
       - name: Pull AstraFlora/Api-Prod
         run: |
           docker pull astraflora/api-prod
-
-      - name: Get runnable
-        run: |
-          Clone $GitHubOrganization $GitHubRepository
 
       - name: Build production docker
         run: |
